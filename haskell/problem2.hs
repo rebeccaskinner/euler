@@ -7,7 +7,4 @@
 -- four million, find the sum of the even-valued terms.
 
 fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
-
-main = do
-    let fbl = sum $ filter even ( takeWhile (<4000000) fibs )
-    putStrLn (show fbl)
+main = print $ sum $ filter even ( takeWhile (<4000000) fibs )
