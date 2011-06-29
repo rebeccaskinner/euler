@@ -8,7 +8,7 @@ import Data.List
 intSqrt = ceiling . sqrt . fromIntegral
 isFactor x y = x `mod` y == 0
 stripFactors (x:[]) = [x]
-stripFactors (x:xs) = if or $ map (flip isFactor x) xs
+stripFactors (x:xs) = if or $ map (`isFactor` x) xs
                       then stripFactors xs
                       else x : stripFactors xs
 
