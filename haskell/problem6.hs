@@ -19,11 +19,11 @@ squareOfSum max = sum [1..max] ^ 2
 -- exploit the fact that (a+b+c+d..)^2 - (a^2+b^2+c^2+d^2) =
 -- a(2b + 2c + 2d) + b(2c + 2d) + c(2d) =
 -- 2ab + 2ac + 2ad + 2bc + 2bd + 2cd
-fastDifference a b = sum $ concatMap (\x -> map (\y -> (2*x*y)) [(x+1)..b]) [a..(b-1)]
-slowDifference n = squareOfSum n - sumOfSquares n
+difference' a b = sum $ concatMap (\x -> map (\y -> (2*x*y)) [(x+1)..b]) [a..(b-1)]
+difference n = squareOfSum n - sumOfSquares n
 
 main = do
-    let slow = slowDifference 100
-    let fast = fastDifference 1 100
-    putStrLn ("Fast: " ++ (show fast))
-    putStrLn ("Slow: " ++ (show slow))
+    let slow = difference 100
+    let fast = difference' 1 100
+    putStrLn ("Method 1: " ++ (show fast))
+    putStrLn ("Method 2: " ++ (show slow))
